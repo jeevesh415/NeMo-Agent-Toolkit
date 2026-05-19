@@ -129,6 +129,11 @@ ALLOWLISTED_FILE_PATH_PAIRS: set[tuple[str, str]] = {
         r"^examples/deploy/README\.md",
         r"^examples/memory/memmachine/",
     ),
+    # Allow a365_example docs to reference sibling deploy/ scripts and Dockerfile
+    (
+        r"^examples/a365_example/docs/",
+        r"^examples/a365_example/deploy/",
+    ),
 }
 
 ALLOWLISTED_WORDS: set[str] = {
@@ -159,6 +164,8 @@ ALLOWLISTED_WORDS: set[str] = {
     "LangChain/LangGraph.",
     "LangChain/LangGraph-based",
     "LTE/5G",
+    "mistralai/mistral-large-3-675b-instruct-2512",
+    "mistralai/mistral-small-4-119b-2603",
     "N/A",
     "output/jobs/job_",
     "POST/PUT",
@@ -207,7 +214,7 @@ ALLOWLISTED_WORDS: set[str] = {
     # anything starting with nvcr.io
     "nvcr\\.io/.*",  # anything starting with default/
     "default/.*",  # Models with their prefixes
-    "(azure|openai|gcp|google)/.*",
+    "(azure|openai|gcp|google|anthropic|gemini)/.*",
 }
 
 IGNORED_FILE_PATH_PAIRS: set[tuple[str, str]] = {
@@ -254,6 +261,8 @@ IGNORED_FILES: set[str] = {
     r"docker-compose([A-Za-z0-9_\-\.]+)?\.ya?ml$",  #
     # top-level markdown files with no related content
     r"(CHANGELOG|CONTRIBUTING|LICENSE|SECURITY)\.md",
+    # agent skill reference files contain illustrative paths for target projects
+    r"^skills/",
     r"^manifest.yaml$",  #
     # files located within data directories
     r"data/.*$",  #
@@ -277,6 +286,7 @@ IGNORED_PATHS: set[str] = {
     r"^outputs/line_chart_\d+\.png$",  #
     # virtual environment directories
     r"(\.[a-z_]*env$|^\.[a-z_]*env)",
+    r"^\.claude/",  # coding-agent project configuration directories
 }
 
 ALLOWLISTED_FILE_PATH_PAIRS_REGEX = list(
